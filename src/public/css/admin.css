@@ -1,0 +1,17 @@
+.hover_menu{
+    display: none;
+}
+.hover:hover .hover_menu{
+    display: block;
+}
+.hover:hover{
+    background-color: #c7b4b4;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+.page-item {
+    display: inline-block;
+    margin: 0 5px;
+}
