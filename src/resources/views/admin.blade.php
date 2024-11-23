@@ -2,28 +2,55 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
-<style>
-    table {
-        display: flex;
-        flex-direction: column;
-    }
-    tr {
-        display: flex;
-        flex-direction: row;
-    }
-    th, td {
-        flex: 1;
-    }
-</style>
 @endsection
 
 @section('content')
 <h2 class="">
     Admin
 </h2>
+<form action="/search" method="get">
+    @csrf
+    <table>
+        <tr>
+            <th>お名前</th>
+            <th>性別</th>
+            <th>お問い合わせの種類</th>
+            <th>日付</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" name="name" value="{{ old('name') }}">
+            </td>
+            <td>
+                <select name="gender">
+                    <option value="">選択してください</option>
+                    @foreach ($select_gender as $key => $value)
+                    <option value="{{$key}}" {{ old('gender') == $key ? 'selected' : '' }}>{{$value}}</option>
+                    @endforeach
+                </select>
+            </td>
+            <td>
+                <select name="category">
+                    <option value="">選択してください</option>
+                    @foreach ($categories as $category)
+                    <option value="{{ $category['id'] }}" {{ old('category') == $category['id'] ? 'selected' : '' }}>{{ $category['content'] }}</option>
+                    @endforeach
+                </select>
+            </td>
+            <td>
+                <input type="date" name="date" value="{{ old('date') }}">
+            </td>
+            <td>
+                <button type="submit">検索</button>
+            </td>
+        </tr>
+    </table>
+</form>
+<br>
 
+<a href="/reset">検索条件のリセット</a>
 
-検索条件のリセット
 <button>エクスポート</button>
 <table>
     <tr>

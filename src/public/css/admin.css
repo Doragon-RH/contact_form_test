@@ -15,3 +15,15 @@
     display: inline-block;
     margin: 0 5px;
 }
+
+table {
+    display: flex;
+    flex-direction: column;
+}
+tr {
+    display: flex;
+    flex-direction: row;
+}
+th, td {
+    flex: 1;
+}

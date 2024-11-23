@@ -20,10 +20,10 @@ use App\Http\Controllers\AuthController;
 Route::get('/', [ContactController::class, 'index']);
 Route::post('/confirm', [ContactController::class, 'confirm']);
 Route::post('/thanks', [ContactController::class, 'store']);
-Route::get('/search', [AdminController::class, 'search']);
-Route::get('/reset', [AdminController::class, 'reset']);
 Route::middleware('auth')->group(function(){
     Route::get('/admin', [AuthController::class, 'index']);
     Route::delete('/delete', [AuthController::class, 'delete']);
+    Route::get('/search', [AuthController::class, 'search']);
+    Route::get('/reset', [AuthController::class, 'reset']);
 });
 Route::get('/export');
